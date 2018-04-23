@@ -14,6 +14,6 @@ public class LoginController {
         //登陆验证
         System.out.println(map);
      //   System.out.println(user.getUserName());
-        return "index";
+        return "login";
     }
 }
