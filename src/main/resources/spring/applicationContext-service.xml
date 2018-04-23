@@ -15,4 +15,6 @@
     <context:component-scan base-package="com.asset.stock.service"></context:component-scan>
     <!-- 扫描采购申报-->
     <context:component-scan base-package="com.asset.purchase.service"></context:component-scan>
+    <!-- 权限和申报报废 -->
+    <context:component-scan base-package="com.asset.declare.service"></context:component-scan>
 </beans>
