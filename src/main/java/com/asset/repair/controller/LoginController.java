@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class LoginController {
-    @RequestMapping("/login")
+    @RequestMapping("login")
     public String login(@RequestBody String map){
         //登陆验证
         System.out.println(map);

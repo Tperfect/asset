@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class TestStockController {
-        @RequestMapping("/stock/index")
+    @RequestMapping("/stock/index")
     public String index(){
-        return "login";
+        return "index";
     }
 }

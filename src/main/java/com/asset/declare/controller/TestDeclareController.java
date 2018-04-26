@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TestDeclareController {
     @RequestMapping("/declare/index")
     public String index(){
-        return "login";
+        return "index";
     }
 }
