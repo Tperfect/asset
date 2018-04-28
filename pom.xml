@@ -184,6 +184,10 @@
         <configuration>
           <port>8081</port>
           <path>/</path>
+          <!-- 热部署 -->
+          <url>http://39.105.17.244:8080/manager/text</url>
+          <username>tomcat</username>
+          <password>tomcat</password>
         </configuration>
       </plugin>
       <!-- 资源文件拷贝插件 -->
@@ -196,5 +200,19 @@
         </configuration>
       </plugin>
     </plugins>
+    <resources>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.xml</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>**/*.*</include>
+        </includes>
+      </resource>
+    </resources>
   </build>
 </project>

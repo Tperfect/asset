@@ -13,9 +13,7 @@
     <title>后台管理</title>
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-
     <link rel="stylesheet" href="/css/font.css">
     <link rel="stylesheet" href="/css/xadmin.css">
     <script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
@@ -65,39 +63,57 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="member-list.html">
+                        <a _href="/jsp/myRepairOrder.jsp">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>我的维修单</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="member-list.html">
+                        <a _href="/jsp/repairOrderApproval.jsp">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>维修单审批</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="member-list.html">
+                        <a _href="/jsp/repairOrderConfirm.jsp">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>维修单确认</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="member-list.html">
+                        <a _href="/jsp/repairOrderFeedback.jsp">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>维修单反馈</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="member-list.html">
+                        <a _href="/jsp/repairCheckExamine.jsp">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>维修验收审批</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="member-list.html">
+                        <a _href="/jsp/repairOrderQuery.jsp">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>维修单查询</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="/jsp/repairOrderUpdate.jsp">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>维修单修改</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="/jsp/repairOrderDelete.jsp">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>维修单删除</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="/jsp/repairOrderAdd.jsp">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>维修单增加</cite>
                         </a>
                     </li >
                 </ul>

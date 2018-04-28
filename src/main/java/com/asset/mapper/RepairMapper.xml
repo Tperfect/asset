@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.asset.mapper.RepairMapper" >
+  <resultMap id="BaseResultMap" type="com.asset.pojo.Repair" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="repair_createdate" property="repairCreatedate" jdbcType="DATE" />
+    <result column="repair_people" property="repairPeople" jdbcType="VARCHAR" />
+    <result column="repair_money" property="repairMoney" jdbcType="DECIMAL" />
+    <result column="repair_services_money" property="repairServicesMoney" jdbcType="DECIMAL" />
+    <result column="repair_material_money" property="repairMaterialMoney" jdbcType="DECIMAL" />
+    <result column="repair_cause" property="repairCause" jdbcType="VARCHAR" />
+    <result column="repair_status" property="repairStatus" jdbcType="VARCHAR" />
+    <result column="repair_operation" property="repairOperation" jdbcType="VARCHAR" />
+    <result column="repair_update" property="repairUpdate" jdbcType="DATE" />
+    <result column="repair_result" property="repairResult" jdbcType="VARCHAR" />
+    <result column="repair_record_people" property="repairRecordPeople" jdbcType="VARCHAR" />
+    <result column="repair_verifydate" property="repairVerifydate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, repair_createdate, repair_people, repair_money, repair_services_money, repair_material_money, 
+    repair_cause, repair_status, repair_operation, repair_update, repair_result, repair_record_people, 
+    repair_verifydate
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.asset.pojo.RepairExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from repair
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from repair
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from repair
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.asset.pojo.RepairExample" >
+    delete from repair
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.asset.pojo.Repair" >
+    insert into repair (id, repair_createdate, repair_people, 
+      repair_money, repair_services_money, repair_material_money, 
+      repair_cause, repair_status, repair_operation, 
+      repair_update, repair_result, repair_record_people, 
+      repair_verifydate)
+    values (#{id,jdbcType=INTEGER}, #{repairCreatedate,jdbcType=DATE}, #{repairPeople,jdbcType=VARCHAR}, 
+      #{repairMoney,jdbcType=DECIMAL}, #{repairServicesMoney,jdbcType=DECIMAL}, #{repairMaterialMoney,jdbcType=DECIMAL}, 
+      #{repairCause,jdbcType=VARCHAR}, #{repairStatus,jdbcType=VARCHAR}, #{repairOperation,jdbcType=VARCHAR}, 
+      #{repairUpdate,jdbcType=DATE}, #{repairResult,jdbcType=VARCHAR}, #{repairRecordPeople,jdbcType=VARCHAR}, 
+      #{repairVerifydate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.asset.pojo.Repair" >
+    insert into repair
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="repairCreatedate != null" >
+        repair_createdate,
+      </if>
+      <if test="repairPeople != null" >
+        repair_people,
+      </if>
+      <if test="repairMoney != null" >
+        repair_money,
+      </if>
+      <if test="repairServicesMoney != null" >
+        repair_services_money,
+      </if>
+      <if test="repairMaterialMoney != null" >
+        repair_material_money,
+      </if>
+      <if test="repairCause != null" >
+        repair_cause,
+      </if>
+      <if test="repairStatus != null" >
+        repair_status,
+      </if>
+      <if test="repairOperation != null" >
+        repair_operation,
+      </if>
+      <if test="repairUpdate != null" >
+        repair_update,
+      </if>
+      <if test="repairResult != null" >
+        repair_result,
+      </if>
+      <if test="repairRecordPeople != null" >
+        repair_record_people,
+      </if>
+      <if test="repairVerifydate != null" >
+        repair_verifydate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="repairCreatedate != null" >
+        #{repairCreatedate,jdbcType=DATE},
+      </if>
+      <if test="repairPeople != null" >
+        #{repairPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="repairMoney != null" >
+        #{repairMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="repairServicesMoney != null" >
+        #{repairServicesMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="repairMaterialMoney != null" >
+        #{repairMaterialMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="repairCause != null" >
+        #{repairCause,jdbcType=VARCHAR},
+      </if>
+      <if test="repairStatus != null" >
+        #{repairStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="repairOperation != null" >
+        #{repairOperation,jdbcType=VARCHAR},
+      </if>
+      <if test="repairUpdate != null" >
+        #{repairUpdate,jdbcType=DATE},
+      </if>
+      <if test="repairResult != null" >
+        #{repairResult,jdbcType=VARCHAR},
+      </if>
+      <if test="repairRecordPeople != null" >
+        #{repairRecordPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="repairVerifydate != null" >
+        #{repairVerifydate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.asset.pojo.RepairExample" resultType="java.lang.Integer" >
+    select count(*) from repair
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update repair
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.repairCreatedate != null" >
+        repair_createdate = #{record.repairCreatedate,jdbcType=DATE},
+      </if>
+      <if test="record.repairPeople != null" >
+        repair_people = #{record.repairPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repairMoney != null" >
+        repair_money = #{record.repairMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.repairServicesMoney != null" >
+        repair_services_money = #{record.repairServicesMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.repairMaterialMoney != null" >
+        repair_material_money = #{record.repairMaterialMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.repairCause != null" >
+        repair_cause = #{record.repairCause,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repairStatus != null" >
+        repair_status = #{record.repairStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repairOperation != null" >
+        repair_operation = #{record.repairOperation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repairUpdate != null" >
+        repair_update = #{record.repairUpdate,jdbcType=DATE},
+      </if>
+      <if test="record.repairResult != null" >
+        repair_result = #{record.repairResult,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repairRecordPeople != null" >
+        repair_record_people = #{record.repairRecordPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repairVerifydate != null" >
+        repair_verifydate = #{record.repairVerifydate,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update repair
+    set id = #{record.id,jdbcType=INTEGER},
+      repair_createdate = #{record.repairCreatedate,jdbcType=DATE},
+      repair_people = #{record.repairPeople,jdbcType=VARCHAR},
+      repair_money = #{record.repairMoney,jdbcType=DECIMAL},
+      repair_services_money = #{record.repairServicesMoney,jdbcType=DECIMAL},
+      repair_material_money = #{record.repairMaterialMoney,jdbcType=DECIMAL},
+      repair_cause = #{record.repairCause,jdbcType=VARCHAR},
+      repair_status = #{record.repairStatus,jdbcType=VARCHAR},
+      repair_operation = #{record.repairOperation,jdbcType=VARCHAR},
+      repair_update = #{record.repairUpdate,jdbcType=DATE},
+      repair_result = #{record.repairResult,jdbcType=VARCHAR},
+      repair_record_people = #{record.repairRecordPeople,jdbcType=VARCHAR},
+      repair_verifydate = #{record.repairVerifydate,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.asset.pojo.Repair" >
+    update repair
+    <set >
+      <if test="repairCreatedate != null" >
+        repair_createdate = #{repairCreatedate,jdbcType=DATE},
+      </if>
+      <if test="repairPeople != null" >
+        repair_people = #{repairPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="repairMoney != null" >
+        repair_money = #{repairMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="repairServicesMoney != null" >
+        repair_services_money = #{repairServicesMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="repairMaterialMoney != null" >
+        repair_material_money = #{repairMaterialMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="repairCause != null" >
+        repair_cause = #{repairCause,jdbcType=VARCHAR},
+      </if>
+      <if test="repairStatus != null" >
+        repair_status = #{repairStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="repairOperation != null" >
+        repair_operation = #{repairOperation,jdbcType=VARCHAR},
+      </if>
+      <if test="repairUpdate != null" >
+        repair_update = #{repairUpdate,jdbcType=DATE},
+      </if>
+      <if test="repairResult != null" >
+        repair_result = #{repairResult,jdbcType=VARCHAR},
+      </if>
+      <if test="repairRecordPeople != null" >
+        repair_record_people = #{repairRecordPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="repairVerifydate != null" >
+        repair_verifydate = #{repairVerifydate,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.asset.pojo.Repair" >
+    update repair
+    set repair_createdate = #{repairCreatedate,jdbcType=DATE},
+      repair_people = #{repairPeople,jdbcType=VARCHAR},
+      repair_money = #{repairMoney,jdbcType=DECIMAL},
+      repair_services_money = #{repairServicesMoney,jdbcType=DECIMAL},
+      repair_material_money = #{repairMaterialMoney,jdbcType=DECIMAL},
+      repair_cause = #{repairCause,jdbcType=VARCHAR},
+      repair_status = #{repairStatus,jdbcType=VARCHAR},
+      repair_operation = #{repairOperation,jdbcType=VARCHAR},
+      repair_update = #{repairUpdate,jdbcType=DATE},
+      repair_result = #{repairResult,jdbcType=VARCHAR},
+      repair_record_people = #{repairRecordPeople,jdbcType=VARCHAR},
+      repair_verifydate = #{repairVerifydate,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
