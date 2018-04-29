@@ -5,6 +5,7 @@ package com.asset.repair.service.impl;
 import com.asset.mapper.RepairMapper;
 import com.asset.pojo.Repair;
 import com.asset.pojo.RepairExample;
+import com.asset.pojo.RepairExample.Criteria;
 import com.asset.repair.result.LayUIResult;
 import com.asset.repair.service.RepairOrderService;
 import com.github.pagehelper.PageHelper;
@@ -36,7 +37,7 @@ public class RepairOrderServiceImpl implements RepairOrderService {
         PageHelper.startPage(page,limit);
         LayUIResult layUIResult = new LayUIResult();
         RepairExample example = new RepairExample();
-        RepairExample.Criteria criteria = example.createCriteria();
+        Criteria criteria = example.createCriteria();
         List<Repair> repairs = repairMapper.selectByExample(example);
         PageInfo info = new PageInfo(repairs);
         layUIResult.setCode(0);

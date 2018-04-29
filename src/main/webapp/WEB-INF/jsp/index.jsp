@@ -116,6 +116,18 @@
                             <cite>维修单增加</cite>
                         </a>
                     </li >
+                    <li>
+                        <a _href="/jsp/repairApplyAdd.jsp">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>维修申请</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="/jsp/repairApplyExamine.jsp">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>申请审核</cite>
+                        </a>
+                    </li >
                 </ul>
             </li>
             <li>

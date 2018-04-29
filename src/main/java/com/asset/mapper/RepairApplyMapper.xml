@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.asset.mapper.RepairApplyMapper" >
+  <resultMap id="BaseResultMap" type="com.asset.pojo.RepairApply" >
+    <id column="apply_id" property="applyId" jdbcType="INTEGER" />
+    <result column="apply_people" property="applyPeople" jdbcType="VARCHAR" />
+    <result column="apply_dept" property="applyDept" jdbcType="VARCHAR" />
+    <result column="apply_date" property="applyDate" jdbcType="TIMESTAMP" />
+    <result column="apply_asset_id" property="applyAssetId" jdbcType="INTEGER" />
+    <result column="apply_asset_name" property="applyAssetName" jdbcType="VARCHAR" />
+    <result column="apply_asset_spec" property="applyAssetSpec" jdbcType="VARCHAR" />
+    <result column="apply_asset_num" property="applyAssetNum" jdbcType="INTEGER" />
+    <result column="apply_asset_place" property="applyAssetPlace" jdbcType="VARCHAR" />
+    <result column="apply_budget" property="applyBudget" jdbcType="DECIMAL" />
+    <result column="apply_degree" property="applyDegree" jdbcType="INTEGER" />
+    <result column="apply_repairdate" property="applyRepairdate" jdbcType="TIMESTAMP" />
+    <result column="apply_finishdate" property="applyFinishdate" jdbcType="TIMESTAMP" />
+    <result column="apply_content" property="applyContent" jdbcType="VARCHAR" />
+    <result column="apply_case" property="applyCase" jdbcType="VARCHAR" />
+    <result column="apply_status" property="applyStatus" jdbcType="INTEGER" />
+    <result column="apply_examine" property="applyExamine" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    apply_id, apply_people, apply_dept, apply_date, apply_asset_id, apply_asset_name, 
+    apply_asset_spec, apply_asset_num, apply_asset_place, apply_budget, apply_degree, 
+    apply_repairdate, apply_finishdate, apply_content, apply_case, apply_status, apply_examine
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.asset.pojo.RepairApplyExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from repair_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from repair_apply
+    where apply_id = #{applyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from repair_apply
+    where apply_id = #{applyId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.asset.pojo.RepairApplyExample" >
+    delete from repair_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.asset.pojo.RepairApply" >
+    insert into repair_apply (apply_id, apply_people, apply_dept, 
+      apply_date, apply_asset_id, apply_asset_name, 
+      apply_asset_spec, apply_asset_num, apply_asset_place, 
+      apply_budget, apply_degree, apply_repairdate, 
+      apply_finishdate, apply_content, apply_case, 
+      apply_status, apply_examine)
+    values (#{applyId,jdbcType=INTEGER}, #{applyPeople,jdbcType=VARCHAR}, #{applyDept,jdbcType=VARCHAR}, 
+      #{applyDate,jdbcType=TIMESTAMP}, #{applyAssetId,jdbcType=INTEGER}, #{applyAssetName,jdbcType=VARCHAR}, 
+      #{applyAssetSpec,jdbcType=VARCHAR}, #{applyAssetNum,jdbcType=INTEGER}, #{applyAssetPlace,jdbcType=VARCHAR}, 
+      #{applyBudget,jdbcType=DECIMAL}, #{applyDegree,jdbcType=INTEGER}, #{applyRepairdate,jdbcType=TIMESTAMP}, 
+      #{applyFinishdate,jdbcType=TIMESTAMP}, #{applyContent,jdbcType=VARCHAR}, #{applyCase,jdbcType=VARCHAR}, 
+      #{applyStatus,jdbcType=INTEGER}, #{applyExamine,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.asset.pojo.RepairApply" >
+    insert into repair_apply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="applyId != null" >
+        apply_id,
+      </if>
+      <if test="applyPeople != null" >
+        apply_people,
+      </if>
+      <if test="applyDept != null" >
+        apply_dept,
+      </if>
+      <if test="applyDate != null" >
+        apply_date,
+      </if>
+      <if test="applyAssetId != null" >
+        apply_asset_id,
+      </if>
+      <if test="applyAssetName != null" >
+        apply_asset_name,
+      </if>
+      <if test="applyAssetSpec != null" >
+        apply_asset_spec,
+      </if>
+      <if test="applyAssetNum != null" >
+        apply_asset_num,
+      </if>
+      <if test="applyAssetPlace != null" >
+        apply_asset_place,
+      </if>
+      <if test="applyBudget != null" >
+        apply_budget,
+      </if>
+      <if test="applyDegree != null" >
+        apply_degree,
+      </if>
+      <if test="applyRepairdate != null" >
+        apply_repairdate,
+      </if>
+      <if test="applyFinishdate != null" >
+        apply_finishdate,
+      </if>
+      <if test="applyContent != null" >
+        apply_content,
+      </if>
+      <if test="applyCase != null" >
+        apply_case,
+      </if>
+      <if test="applyStatus != null" >
+        apply_status,
+      </if>
+      <if test="applyExamine != null" >
+        apply_examine,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="applyId != null" >
+        #{applyId,jdbcType=INTEGER},
+      </if>
+      <if test="applyPeople != null" >
+        #{applyPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="applyDept != null" >
+        #{applyDept,jdbcType=VARCHAR},
+      </if>
+      <if test="applyDate != null" >
+        #{applyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applyAssetId != null" >
+        #{applyAssetId,jdbcType=INTEGER},
+      </if>
+      <if test="applyAssetName != null" >
+        #{applyAssetName,jdbcType=VARCHAR},
+      </if>
+      <if test="applyAssetSpec != null" >
+        #{applyAssetSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="applyAssetNum != null" >
+        #{applyAssetNum,jdbcType=INTEGER},
+      </if>
+      <if test="applyAssetPlace != null" >
+        #{applyAssetPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="applyBudget != null" >
+        #{applyBudget,jdbcType=DECIMAL},
+      </if>
+      <if test="applyDegree != null" >
+        #{applyDegree,jdbcType=INTEGER},
+      </if>
+      <if test="applyRepairdate != null" >
+        #{applyRepairdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applyFinishdate != null" >
+        #{applyFinishdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applyContent != null" >
+        #{applyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="applyCase != null" >
+        #{applyCase,jdbcType=VARCHAR},
+      </if>
+      <if test="applyStatus != null" >
+        #{applyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="applyExamine != null" >
+        #{applyExamine,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.asset.pojo.RepairApplyExample" resultType="java.lang.Integer" >
+    select count(*) from repair_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update repair_apply
+    <set >
+      <if test="record.applyId != null" >
+        apply_id = #{record.applyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.applyPeople != null" >
+        apply_people = #{record.applyPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applyDept != null" >
+        apply_dept = #{record.applyDept,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applyDate != null" >
+        apply_date = #{record.applyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.applyAssetId != null" >
+        apply_asset_id = #{record.applyAssetId,jdbcType=INTEGER},
+      </if>
+      <if test="record.applyAssetName != null" >
+        apply_asset_name = #{record.applyAssetName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applyAssetSpec != null" >
+        apply_asset_spec = #{record.applyAssetSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applyAssetNum != null" >
+        apply_asset_num = #{record.applyAssetNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.applyAssetPlace != null" >
+        apply_asset_place = #{record.applyAssetPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applyBudget != null" >
+        apply_budget = #{record.applyBudget,jdbcType=DECIMAL},
+      </if>
+      <if test="record.applyDegree != null" >
+        apply_degree = #{record.applyDegree,jdbcType=INTEGER},
+      </if>
+      <if test="record.applyRepairdate != null" >
+        apply_repairdate = #{record.applyRepairdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.applyFinishdate != null" >
+        apply_finishdate = #{record.applyFinishdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.applyContent != null" >
+        apply_content = #{record.applyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applyCase != null" >
+        apply_case = #{record.applyCase,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applyStatus != null" >
+        apply_status = #{record.applyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.applyExamine != null" >
+        apply_examine = #{record.applyExamine,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update repair_apply
+    set apply_id = #{record.applyId,jdbcType=INTEGER},
+      apply_people = #{record.applyPeople,jdbcType=VARCHAR},
+      apply_dept = #{record.applyDept,jdbcType=VARCHAR},
+      apply_date = #{record.applyDate,jdbcType=TIMESTAMP},
+      apply_asset_id = #{record.applyAssetId,jdbcType=INTEGER},
+      apply_asset_name = #{record.applyAssetName,jdbcType=VARCHAR},
+      apply_asset_spec = #{record.applyAssetSpec,jdbcType=VARCHAR},
+      apply_asset_num = #{record.applyAssetNum,jdbcType=INTEGER},
+      apply_asset_place = #{record.applyAssetPlace,jdbcType=VARCHAR},
+      apply_budget = #{record.applyBudget,jdbcType=DECIMAL},
+      apply_degree = #{record.applyDegree,jdbcType=INTEGER},
+      apply_repairdate = #{record.applyRepairdate,jdbcType=TIMESTAMP},
+      apply_finishdate = #{record.applyFinishdate,jdbcType=TIMESTAMP},
+      apply_content = #{record.applyContent,jdbcType=VARCHAR},
+      apply_case = #{record.applyCase,jdbcType=VARCHAR},
+      apply_status = #{record.applyStatus,jdbcType=INTEGER},
+      apply_examine = #{record.applyExamine,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.asset.pojo.RepairApply" >
+    update repair_apply
+    <set >
+      <if test="applyPeople != null" >
+        apply_people = #{applyPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="applyDept != null" >
+        apply_dept = #{applyDept,jdbcType=VARCHAR},
+      </if>
+      <if test="applyDate != null" >
+        apply_date = #{applyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applyAssetId != null" >
+        apply_asset_id = #{applyAssetId,jdbcType=INTEGER},
+      </if>
+      <if test="applyAssetName != null" >
+        apply_asset_name = #{applyAssetName,jdbcType=VARCHAR},
+      </if>
+      <if test="applyAssetSpec != null" >
+        apply_asset_spec = #{applyAssetSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="applyAssetNum != null" >
+        apply_asset_num = #{applyAssetNum,jdbcType=INTEGER},
+      </if>
+      <if test="applyAssetPlace != null" >
+        apply_asset_place = #{applyAssetPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="applyBudget != null" >
+        apply_budget = #{applyBudget,jdbcType=DECIMAL},
+      </if>
+      <if test="applyDegree != null" >
+        apply_degree = #{applyDegree,jdbcType=INTEGER},
+      </if>
+      <if test="applyRepairdate != null" >
+        apply_repairdate = #{applyRepairdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applyFinishdate != null" >
+        apply_finishdate = #{applyFinishdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applyContent != null" >
+        apply_content = #{applyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="applyCase != null" >
+        apply_case = #{applyCase,jdbcType=VARCHAR},
+      </if>
+      <if test="applyStatus != null" >
+        apply_status = #{applyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="applyExamine != null" >
+        apply_examine = #{applyExamine,jdbcType=INTEGER},
+      </if>
+    </set>
+    where apply_id = #{applyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.asset.pojo.RepairApply" >
+    update repair_apply
+    set apply_people = #{applyPeople,jdbcType=VARCHAR},
+      apply_dept = #{applyDept,jdbcType=VARCHAR},
+      apply_date = #{applyDate,jdbcType=TIMESTAMP},
+      apply_asset_id = #{applyAssetId,jdbcType=INTEGER},
+      apply_asset_name = #{applyAssetName,jdbcType=VARCHAR},
+      apply_asset_spec = #{applyAssetSpec,jdbcType=VARCHAR},
+      apply_asset_num = #{applyAssetNum,jdbcType=INTEGER},
+      apply_asset_place = #{applyAssetPlace,jdbcType=VARCHAR},
+      apply_budget = #{applyBudget,jdbcType=DECIMAL},
+      apply_degree = #{applyDegree,jdbcType=INTEGER},
+      apply_repairdate = #{applyRepairdate,jdbcType=TIMESTAMP},
+      apply_finishdate = #{applyFinishdate,jdbcType=TIMESTAMP},
+      apply_content = #{applyContent,jdbcType=VARCHAR},
+      apply_case = #{applyCase,jdbcType=VARCHAR},
+      apply_status = #{applyStatus,jdbcType=INTEGER},
+      apply_examine = #{applyExamine,jdbcType=INTEGER}
+    where apply_id = #{applyId,jdbcType=INTEGER}
+  </update>
+</mapper>
