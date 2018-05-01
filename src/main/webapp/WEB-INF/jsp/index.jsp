@@ -63,60 +63,6 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="/jsp/myRepairOrder.jsp">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>我的维修单</cite>
-                        </a>
-                    </li >
-                    <li>
-                        <a _href="/jsp/repairOrderApproval.jsp">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>维修单审批</cite>
-                        </a>
-                    </li >
-                    <li>
-                        <a _href="/jsp/repairOrderConfirm.jsp">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>维修单确认</cite>
-                        </a>
-                    </li >
-                    <li>
-                        <a _href="/jsp/repairOrderFeedback.jsp">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>维修单反馈</cite>
-                        </a>
-                    </li >
-                    <li>
-                        <a _href="/jsp/repairCheckExamine.jsp">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>维修验收审批</cite>
-                        </a>
-                    </li >
-                    <li>
-                        <a _href="/jsp/repairOrderQuery.jsp">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>维修单查询</cite>
-                        </a>
-                    </li >
-                    <li>
-                        <a _href="/jsp/repairOrderUpdate.jsp">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>维修单修改</cite>
-                        </a>
-                    </li >
-                    <li>
-                        <a _href="/jsp/repairOrderDelete.jsp">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>维修单删除</cite>
-                        </a>
-                    </li >
-                    <li>
-                        <a _href="/jsp/repairOrderAdd.jsp">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>维修单增加</cite>
-                        </a>
-                    </li >
-                    <li>
                         <a _href="/jsp/repairApplyAdd.jsp">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>维修申请</cite>
@@ -126,6 +72,12 @@
                         <a _href="/jsp/repairApplyExamine.jsp">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>申请审核</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="/jsp/myRepairOrder.jsp">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>我的维修单</cite>
                         </a>
                     </li >
                 </ul>

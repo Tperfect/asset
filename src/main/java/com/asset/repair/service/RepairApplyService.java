@@ -7,4 +7,8 @@ public interface RepairApplyService {
     Result repairApplyAdd(RepairApply repairApply);
 
     LayUIResult repairApplyExamine(RepairApply repairApply,String date,Integer page,Integer limit);
+
+    void repairApplyUpdate(Integer applyId,Integer applyExamine,Integer applyDegree);
+
+    void repairApplyUpdateFinishdate(RepairApply repairApply);
 }

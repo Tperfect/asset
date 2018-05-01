@@ -43,7 +43,6 @@ public class RepairApplyServiceImpl implements RepairApplyService {
         if(limit == null){
             limit = LIMIT;
         }
-
         PageHelper.startPage(page,limit);
         LayUIResult layUIResult =new LayUIResult();
         RepairApplyExample example = new RepairApplyExample();
@@ -53,7 +52,13 @@ public class RepairApplyServiceImpl implements RepairApplyService {
                 criteria.andApplyIdEqualTo(repairApply.getApplyId());
             }
             if (!StringUtils.isEmpty(repairApply.getApplyPeople())){
-                criteria.andApplyPeopleLike(repairApply.getApplyPeople());
+                criteria.andApplyPeopleLike("%"+repairApply.getApplyPeople()+"%");
+            }
+            if(!StringUtils.isEmpty(repairApply.getApplyExamine())){
+                criteria.andApplyExamineEqualTo(repairApply.getApplyExamine());
+            }
+            if(!StringUtils.isEmpty(repairApply.getApplyStatus())){
+                criteria.andApplyStatusEqualTo(repairApply.getApplyStatus());
             }
         }
         if(!StringUtils.isEmpty(date)){
@@ -74,5 +79,35 @@ public class RepairApplyServiceImpl implements RepairApplyService {
         layUIResult.setCount(info.getTotal());
         layUIResult.setData(info.getList());
         return layUIResult;
+    }
+
+    public void repairApplyUpdate(Integer applyId,Integer applyExamine,Integer applyDegree) {
+        RepairApply repairApply = new RepairApply();
+        if(applyExamine != null){
+            if(applyExamine == 1){
+                applyExamine = 0;
+            }else {
+                applyExamine = 1;
+            }
+            repairApply.setApplyExamine(applyExamine);
+        }
+        if(applyDegree != null){
+            if(applyDegree == 1){
+                applyDegree = 0;
+            }else {
+                applyDegree = 1;
+            }
+            repairApply.setApplyDegree(applyDegree);
+        }
+        repairApply.setApplyId(applyId);
+        repairApplyMapper.updateByPrimaryKeySelective(repairApply);
+    }
+
+    public void repairApplyUpdateFinishdate(RepairApply repairApply) {
+        if (repairApply != null){
+            if (!StringUtils.isEmpty(repairApply.getApplyId()) && !StringUtils.isEmpty(repairApply.getApplyFinishdate())){
+                repairApplyMapper.updateByPrimaryKeySelective(repairApply);
+            }
+        }
     }
 }

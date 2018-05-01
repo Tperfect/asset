@@ -1,5 +1,7 @@
 package com.asset.pojo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class RepairApply {
@@ -8,7 +10,7 @@ public class RepairApply {
     private String applyPeople;
 
     private String applyDept;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date applyDate;
 
     private Integer applyAssetId;
@@ -24,9 +26,9 @@ public class RepairApply {
     private Long applyBudget;
 
     private Integer applyDegree;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date applyRepairdate;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date applyFinishdate;
 
     private String applyContent;

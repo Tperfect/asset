@@ -21,9 +21,22 @@ public class RepairApplyController {
         return null;
     }
 
-    @RequestMapping("/apply/examine")
+    @RequestMapping(value = "/apply/examine")
     @ResponseBody
     public LayUIResult repaieApplyExamine(RepairApply repairApply,String date,Integer page,Integer limit){
         return repairApplyService.repairApplyExamine(repairApply,date,page,limit);
+    }
+
+    @RequestMapping("/apply/update")
+    @ResponseBody
+    public Result repairApplyUpdate(Integer applyId,Integer applyExamine,Integer applyDegree){
+        repairApplyService.repairApplyUpdate(applyId,applyExamine,applyDegree);
+        return null;
+    }
+
+    @RequestMapping("/apply/updateFinishdate")
+    public Result repairApplyUpdateFinishdate(RepairApply repairApply){
+        repairApplyService.repairApplyUpdateFinishdate(repairApply);
+        return null;
     }
 }

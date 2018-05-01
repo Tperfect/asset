@@ -188,6 +188,7 @@
           <url>http://39.105.17.244:8080/manager/text</url>
           <username>tomcat</username>
           <password>tomcat</password>
+          <uriEncoding>utf-8</uriEncoding>
         </configuration>
       </plugin>
       <!-- 资源文件拷贝插件 -->
